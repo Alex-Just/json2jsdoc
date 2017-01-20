@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<% for (var chunk in htmlWebpackPlugin.files.css) { %>
+	<link rel="preload" href="<%= htmlWebpackPlugin.files.css[chunk] %>" as="style">
+	<% } %>
+
+	<% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
+	<link rel="preload" href="<%= htmlWebpackPlugin.files.chunks[chunk].entry %>" as="script">
+	<% } %>
+
+	<meta charset="utf-8">
+	<title>json2jsdoc - Detect object's schema by parsing its JSON data</title>
+
+	<meta name="viewport"
+		  content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+	<meta name="description" content="Convert JSON to JSDoc. Detect object's schema by parsing its JSON data">
+	<meta name="format-detection" content="telephone=no">
+
+	<link rel="shortcut icon" href="https://developers.google.com/_static/eff800eae2/images/favicon.png">
+	<link rel="apple-touch-icon" href="https://developers.google.com/_static/eff800eae2/images/touch-icon.png">
+	<link rel="manifest" href="./manifest.json">
+</head>
+<body></body>
+</html>
