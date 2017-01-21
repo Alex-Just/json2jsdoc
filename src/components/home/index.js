@@ -49,7 +49,7 @@ export default class Home extends Component {
 	}
 
 	handleKeyDown = (e) => {
-		setTimeout(this.delayedAction, 200, {pasted: e.metaKey && e.key === "v"});
+		setTimeout(this.delayedAction, 200, {pasted: e.metaKey && e.keyCode === 86}); //Detect ctrl(CMD) + v
 	};
 
 	delayedAction = ({pasted}) => {
