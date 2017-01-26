@@ -1,6 +1,6 @@
 import { h, Component } from 'preact'
 import style from './style'
-import { convertJsonToJsdoc } from '../../lib/utils'
+import { convertJsonToJsdoc } from '../../lib'
 
 console.log(h)
 export default class Home extends Component {

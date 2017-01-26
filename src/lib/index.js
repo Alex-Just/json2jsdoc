@@ -18,28 +18,30 @@ function processObject ({obj, name}) {
   }
 
   for (const prop in obj) {
-    if (obj.hasOwnProperty(prop)) {
-      let type = capitalizeFirstLetter(typeof obj[prop])
+    if (!obj.hasOwnProperty(prop)) {
+      continue
+    }
 
-      if (Array.isArray(obj[prop])) {
-        type = !obj[prop].length ? '' : capitalizeFirstLetter(typeof obj[prop][0])
-        type = type + '[]'
+    let type = capitalizeFirstLetter(typeof obj[prop])
 
-        if (type === 'Object[]') {
-          objects.push({
-            obj: obj[prop][0],
-            name: `${prop} instance`
-          })
-        }
-      } else if (type === 'Object') {
+    if (Array.isArray(obj[prop])) {
+      type = !obj[prop].length ? '' : capitalizeFirstLetter(typeof obj[prop][0])
+      type = type + '[]'
+
+      if (type === 'Object[]') {
         objects.push({
-          obj: obj[prop],
-          name: prop
+          obj: obj[prop][0],
+          name: `${prop} instance`
         })
       }
-
-      t += ` * ${red('@property')} {${type}} ${prop}\n`
+    } else if (type === 'Object') {
+      objects.push({
+        obj: obj[prop],
+        name: prop
+      })
     }
+
+    t += ` * ${red('@property')} {${type}} ${prop}\n`
   }
 
   t += ' */\n\n'
