@@ -89,7 +89,7 @@ export default class Home extends Component {
 		return (
 			<div>
 				<div class={style.home}>
-					<h1 class={style.header}>Paste your JSON data here</h1>
+					<h1 class={style.header}><span class={style.highlight}>Paste</span> your JSON data here</h1>
 
 					<textarea id="json"
 							  class={style.textarea}
@@ -104,7 +104,7 @@ export default class Home extends Component {
 				</div>
 
 				<div class={style.home}>
-					<h1 class={style.header}>And get JSDoc output here</h1>
+					<h1 class={style.header}>And <span class={style.highlight}>get</span> JSDoc output here</h1>
 
 					<pre class={style.jsdoc}
 						 onClick={this.handleJsdocFocus}
