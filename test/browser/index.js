@@ -1,49 +1,32 @@
-import {render, rerender} from "preact";
-import {route} from "preact-router";
-import App from "components/app";
-import "style";
+import { h, render } from 'preact'
+import App from 'components/app'
+import 'style'
 
-/*global sinon,expect*/
+console.log(h)
+/* global describe, before, beforeEach, after, it, expect */
 
 describe('App', () => {
-	let scratch;
+  let scratch
 
-	before(() => {
-		scratch = document.createElement('div');
-		(document.body || document.documentElement).appendChild(scratch);
-	});
+  before(() => {
+    scratch = document.createElement('div');
+    (document.body || document.documentElement).appendChild(scratch)
+  })
 
-	beforeEach(() => {
-		scratch.innerHTML = '';
-	});
+  beforeEach(() => {
+    scratch.innerHTML = ''
+  })
 
-	after(() => {
-		scratch.parentNode.removeChild(scratch);
-		scratch = null;
-	});
+  after(() => {
+    scratch.parentNode.removeChild(scratch)
+    scratch = null
+  })
 
+  describe('routing', () => {
+    it('should render the homepage', () => {
+      render(<App />, scratch)
 
-	describe('routing', () => {
-		it('should render the homepage', () => {
-			render(<App />, scratch);
-
-			expect(scratch.innerHTML).to.contain('JSON to JSDoc');
-		});
-
-		it('should render /profile', () => {
-			render(<App />, scratch);
-			route('/profile');
-			rerender();
-
-			expect(scratch.innerHTML).to.contain('Profile: me');
-		});
-
-		it('should render /profile/:user', () => {
-			render(<App />, scratch);
-			route('/profile/john');
-			rerender();
-
-			expect(scratch.innerHTML).to.contain('Profile: john');
-		});
-	});
-});
+      expect(scratch.innerHTML).to.contain('JSON to JSDoc')
+    })
+  })
+})

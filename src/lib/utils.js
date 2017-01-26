@@ -1,66 +1,65 @@
-export function convertJsonToJsdoc(json_data) {
-	let obj;
-	try {
-		obj = JSON.parse(json_data);
-	} catch (e) {
-		return e;
-	}
+export function convertJsonToJsdoc (jsonData) {
+  let obj
+  try {
+    obj = JSON.parse(jsonData)
+  } catch (e) {
+    return e
+  }
 
-	return processObject({obj, objName: ''}).trim();
+  return processObject({obj, objName: ''}).trim()
 }
 
-function processObject({obj, name}) {
-	let objects = [];
-	let t = '/**\n';
+function processObject ({obj, name}) {
+  let objects = []
+  let t = '/**\n'
 
-	if (name) {
-		t += ` * ${red('@typedef')}  {${capitalizeFirstLetter(typeof obj)}} ${name}\n`;
-	}
+  if (name) {
+    t += ` * ${red('@typedef')}  {${capitalizeFirstLetter(typeof obj)}} ${name}\n`
+  }
 
-	for (const prop in obj) {
-		if (obj.hasOwnProperty(prop)) {
-			let type = capitalizeFirstLetter(typeof obj[prop]);
+  for (const prop in obj) {
+    if (obj.hasOwnProperty(prop)) {
+      let type = capitalizeFirstLetter(typeof obj[prop])
 
-			if (Array.isArray(obj[prop])) {
-				type = !obj[prop].length ? '' : capitalizeFirstLetter(typeof obj[prop][0]);
-				type = type + '[]';
+      if (Array.isArray(obj[prop])) {
+        type = !obj[prop].length ? '' : capitalizeFirstLetter(typeof obj[prop][0])
+        type = type + '[]'
 
-				if (type === 'Object[]') {
-					objects.push({
-						obj: obj[prop][0],
-						name: `${prop} instance`
-					});
-				}
+        if (type === 'Object[]') {
+          objects.push({
+            obj: obj[prop][0],
+            name: `${prop} instance`
+          })
+        }
+      } else if (type === 'Object') {
+        objects.push({
+          obj: obj[prop],
+          name: prop
+        })
+      }
 
-			} else if (type === 'Object') {
-				objects.push({
-					obj: obj[prop],
-					name: prop
-				});
-			}
+      t += ` * ${red('@property')} {${type}} ${prop}\n`
+    }
+  }
 
-			t += ` * ${red('@property')} {${type}} ${prop}\n`;
-		}
-	}
+  t += ' */\n\n'
 
-	t += ' */\n\n';
+  if (!objects.length) {
+    return t
+  }
 
-	if (!objects.length) {
-		return t;
-	}
-
-	objects.forEach(e => {
-		t += processObject(e);
-	});
-	return t;
+  objects.forEach(e => {
+    t += processObject(e)
+  })
+  return t
 }
 
-function red(str) {
-	return `<span class="property">${str}</span>`;
+function red (str) {
+  return `<span class="property">${str}</span>`
 }
 
-function capitalizeFirstLetter(str) {
-	return str.charAt(0).toUpperCase() + str.slice(1);
+function capitalizeFirstLetter (str) {
+  return str.charAt(0).toUpperCase() + str.slice(1)
 }
 
 /**
@@ -86,6 +85,6 @@ function capitalizeFirstLetter(str) {
  * @property {String} crew
  */
 // function test(data) {
-// 	console.log(data.starships[0].manufacturer);
+//   console.log(data.starships[0].manufacturer);
 // }
 // test();

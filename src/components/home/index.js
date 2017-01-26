@@ -1,120 +1,125 @@
-import {h, Component} from "preact";
-import style from "./style";
-import {convertJsonToJsdoc} from "../../lib/utils";
+import { h, Component } from 'preact'
+import style from './style'
+import { convertJsonToJsdoc } from '../../lib/utils'
 
+console.log(h)
 export default class Home extends Component {
-	h = h;
 
-	defaultJSON = '{\n' +
-		'    "name": "Luke Skywalker",\n' +
-		'    "gender": "male",\n' +
-		'    "homeworld": {\n' +
-		'        "name": "Tatooine",\n' +
-		'        "films": [\n' +
-		'            "Attack of the Clones",\n' +
-		'            "The Phantom Menace",\n' +
-		'            "Revenge of the Sith",\n' +
-		'            "Return of the Jedi",\n' +
-		'            "A New Hope"\n' +
-		'        ]\n' +
-		'    },\n' +
-		'    "films": [\n' +
-		'        "Revenge of the Sith",\n' +
-		'        "Return of the Jedi",\n' +
-		'        "The Empire Strikes Back",\n' +
-		'        "A New Hope",\n' +
-		'        "The Force Awakens"\n' +
-		'    ],\n' +
-		'    "starships": [\n' +
-		'        {\n' +
-		'            "name": "Death Star",\n' +
-		'            "model": "DS - 1 Orbital Battle Station ",\n' +
-		'            "manufacturer": "Imperial Department of Military Research",\n' +
-		'            "cost_in_credits": "1000000000000",\n' +
-		'            "crew": "342953"\n' +
-		'        }, \n' +
-		'        {\n' +
-		'            "name": "Imperial shuttle",\n' +
-		'            "model": "Lambda-class T-4a shuttle",\n' +
-		'            "manufacturer": "Sienar Fleet Systems",\n' +
-		'            "cost_in_credits": "240000",\n' +
-		'            "crew": "6"\n' +
-		'        }\n' +
-		'    ]\n' +
-		'}\n' +
-		'\n';
+  constructor () {
+    super()
 
-	componentDidMount() {
-		this.delayedAction({pasted: true});
-	}
+    this.defaultJSON = '{\n' +
+      '    "name": "Luke Skywalker",\n' +
+      '    "gender": "male",\n' +
+      '    "homeworld": {\n' +
+      '        "name": "Tatooine",\n' +
+      '        "films": [\n' +
+      '            "Attack of the Clones",\n' +
+      '            "The Phantom Menace",\n' +
+      '            "Revenge of the Sith",\n' +
+      '            "Return of the Jedi",\n' +
+      '            "A New Hope"\n' +
+      '        ]\n' +
+      '    },\n' +
+      '    "films": [\n' +
+      '        "Revenge of the Sith",\n' +
+      '        "Return of the Jedi",\n' +
+      '        "The Empire Strikes Back",\n' +
+      '        "A New Hope",\n' +
+      '        "The Force Awakens"\n' +
+      '    ],\n' +
+      '    "starships": [\n' +
+      '        {\n' +
+      '            "name": "Death Star",\n' +
+      '            "model": "DS - 1 Orbital Battle Station ",\n' +
+      '            "manufacturer": "Imperial Department of Military Research",\n' +
+      '            "cost_in_credits": "1000000000000",\n' +
+      '            "crew": "342953"\n' +
+      '        }, \n' +
+      '        {\n' +
+      '            "name": "Imperial shuttle",\n' +
+      '            "model": "Lambda-class T-4a shuttle",\n' +
+      '            "manufacturer": "Sienar Fleet Systems",\n' +
+      '            "cost_in_credits": "240000",\n' +
+      '            "crew": "6"\n' +
+      '        }\n' +
+      '    ]\n' +
+      '}\n' +
+      '\n'
+  }
 
-	handleKeyDown = (e) => {
-		setTimeout(this.delayedAction, 200, {pasted: e.metaKey && e.keyCode === 86}); //Detect ctrl(CMD) + v
-	};
+  componentDidMount () {
+    this.delayedAction({pasted: true})
+  }
 
-	delayedAction = ({pasted}) => {
-		//Prettify input JSON
-		if (pasted) {
-			try {
-				this.inputJson.value = JSON.stringify(JSON.parse(this.inputJson.value), null, 2);
-			} catch (e) {
-			}
-		}
+  handleKeyDown = (e) => {
+    setTimeout(this.delayedAction, 200, {pasted: e.metaKey && e.keyCode === 86}) // Detect ctrl(CMD) + v
+  };
 
-		this.inputJsdoc.innerHTML = convertJsonToJsdoc(this.inputJson.value);
+  delayedAction = ({pasted}) => {
+    // Prettify input JSON
+    if (pasted) {
+      try {
+        this.inputJson.value = JSON.stringify(JSON.parse(this.inputJson.value), null, 2)
+      } catch (e) {
+      }
+    }
 
-		if (pasted) {
-			this.handleJsdocFocus();
-		}
-	};
+    this.inputJsdoc.innerHTML = convertJsonToJsdoc(this.inputJson.value)
 
-	handleJsdocFocus = () => {
-		this.selectCode(this.inputJsdoc);
-	};
+    if (pasted) {
+      this.handleJsdocFocus()
+    }
+  };
 
-	handleJsonFocus = () => {
-		// TODO: Input should be clickable without selecting while being manually edited
-		this.inputJson.select();
-	};
+  handleJsdocFocus = () => {
+    this.selectCode(this.inputJsdoc)
+  };
 
-	selectCode = (el) => {
-		const range = document.createRange();
-		range.selectNodeContents(el);
-		const sel = window.getSelection();
-		sel.removeAllRanges();
-		sel.addRange(range);
-	};
+  handleJsonFocus = () => {
+    // TODO: Input should be clickable without selecting while being manually edited
+    this.inputJson.select()
+  };
 
-	render() {
-		return (
-			<div>
-				<div class={style.home}>
-					<h1 class={style.header}><span class={style.highlight}>Paste</span> your JSON data here</h1>
+  selectCode = (el) => {
+    const range = document.createRange()
+    range.selectNodeContents(el)
+    const sel = window.getSelection()
+    sel.removeAllRanges()
+    sel.addRange(range)
+  };
 
-					<textarea id="json"
-							  class={style.textarea}
-							  onClick={this.handleJsonFocus}
-							  onKeyDown={this.handleKeyDown}
-							  spellCheck="false"
-							  value={this.defaultJSON}
-							  ref={node => {
-								  this.inputJson = node;
-							  }}
-					/>
-				</div>
+  render () {
+    return (
+      <div>
+        <div class={style.home}>
+          <h1 class={style.header}><span class={style.highlight}>Paste</span> your JSON data here</h1>
 
-				<div class={style.home}>
-					<h1 class={style.header}>And <span class={style.highlight}>get</span> JSDoc output here</h1>
+          <textarea
+            id='json'
+            class={style.textarea}
+            onClick={this.handleJsonFocus}
+            onKeyDown={this.handleKeyDown}
+            spellCheck='false'
+            value={this.defaultJSON}
+            ref={node => {
+              this.inputJson = node
+            }}
+          />
+        </div>
 
-					<pre class={style.jsdoc}
-						 onClick={this.handleJsdocFocus}
-						 ref={node => {
-							 this.inputJsdoc = node;
-						 }}
-					>
-					</pre>
-				</div>
-			</div>
-		);
-	}
+        <div class={style.home}>
+          <h1 class={style.header}>And <span class={style.highlight}>get</span> JSDoc output here</h1>
+
+          <pre
+            class={style.jsdoc}
+            onClick={this.handleJsdocFocus}
+            ref={node => {
+              this.inputJsdoc = node
+            }}
+          />
+        </div>
+      </div>
+    )
+  }
 }
