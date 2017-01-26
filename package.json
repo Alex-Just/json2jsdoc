@@ -18,7 +18,15 @@
     "webpack"
   ],
   "license": "MIT",
-  "author": "Jason Miller <jason@developit.ca>",
+  "author": "Alex Just <AlexJustEmail@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alex-just/json2jsdoc.git"
+  },
+  "bugs": {
+    "url": "https://github.com/alex-just/json2jsdoc/issues"
+  },
+  "homepage": "https://github.com/alex-just/json2jsdoc#readme",
   "devDependencies": {
     "autoprefixer": "^6.4.0",
     "babel": "^6.5.2",
@@ -50,6 +58,7 @@
     "karma": "^1.0.0",
     "karma-chai": "^0.1.0",
     "karma-chai-sinon": "^0.1.5",
+    "karma-chrome-launcher": "^2.0.0",
     "karma-coverage": "^1.1.1",
     "karma-mocha": "^1.0.1",
     "karma-mocha-reporter": "^2.1.0",

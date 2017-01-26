@@ -111,7 +111,7 @@ describe('App', () => {
 
       const jsdoc = convertJsonToJsdoc(defaultJSON)
 
-      expect(jsdoc).to.be.equal('SyntaxError: Unexpected token b in JSON at position 0')
+      expect(jsdoc.toString()).to.be.equal('SyntaxError: Unexpected token b in JSON at position 0')
     })
   })
 })

@@ -15,9 +15,8 @@ module.exports = function (config) {
     reporters: ['mocha', 'coverage'],
     coverageReporter: {
       reporters: [
-        {
-          type: 'text-summary'
-        },
+        {type: 'lcov', subdir: '.'},
+        {type: 'text-summary'},
         {
           type: 'html',
           dir: 'coverage',
@@ -26,7 +25,7 @@ module.exports = function (config) {
       ]
     },
 
-    browsers: ['PhantomJS'],
+    browsers: ['Chrome'],
 
     files: [
       'test/browser/**/*.js'
