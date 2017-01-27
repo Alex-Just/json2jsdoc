@@ -1,8 +1,7 @@
-import { h, Component } from 'preact'
+import { h, Component } from 'preact' // eslint-disable-line no-unused-vars
 import style from './style'
 import { convertJsonToJsdoc } from '../../lib'
 
-console.log(h)
 export default class Home extends Component {
 
   constructor () {

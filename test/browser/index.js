@@ -1,10 +1,9 @@
-import { h, render } from 'preact'
+import { h, render } from 'preact' // eslint-disable-line no-unused-vars
 import App from 'components/app'
 import Home from 'components/home'
 import 'style'
 import { convertJsonToJsdoc } from '../../src/lib/index'
 
-console.log(h)
 /* global describe, before, beforeEach, after, it, expect */
 
 describe('App', () => {

@@ -1,9 +1,8 @@
-import { h, Component } from 'preact'
+import { h, Component } from 'preact' // eslint-disable-line no-unused-vars
 import { Router } from 'preact-router'
 import Header from './header'
 import Home from './home'
 
-console.log(h)
 export default class App extends Component {
   /** Gets fired when the route changes.
    *  @param {Object} e    "change" event from [preact-router](http://git.io/preact-router)

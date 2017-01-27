@@ -1,6 +1,5 @@
-import { h, Component } from 'preact'
+import { h, Component } from 'preact' // eslint-disable-line no-unused-vars
 import style from './style'
-console.log(h)
 
 export default class Header extends Component {
   render () {

@@ -1,10 +1,9 @@
 // import 'promise-polyfill';
 // import 'isomorphic-fetch';
-import { h, render } from 'preact'
+import { h, render } from 'preact' // eslint-disable-line no-unused-vars
 import './style'
 
 /* global requestAnimationFrame */
-console.log(h)
 
 let root
 function init () {
