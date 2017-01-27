@@ -1,7 +1,7 @@
 {
   "name": "json2jsdoc",
-  "version": "0.0.1",
-  "description": "Ready-to-go Preact starter project powered by webpack.",
+  "version": "1.0.0",
+  "description": "json2jsdoc - Detect object's schema by parsing its JSON data",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --inline --hot --progress",
     "start": "serve build -s -c 1",
