@@ -2,6 +2,7 @@ import { h, Component } from 'preact' // eslint-disable-line no-unused-vars
 import { Router } from 'preact-router'
 import Header from './header'
 import Home from './home'
+import Info from './info'
 
 export default class App extends Component {
   /** Gets fired when the route changes.
@@ -19,6 +20,7 @@ export default class App extends Component {
         <Router onChange={this.handleRoute}>
           <Home path='/' />
         </Router>
+        <Info />
       </div>
     )
   }

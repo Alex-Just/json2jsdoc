@@ -64,29 +64,29 @@ function capitalizeFirstLetter (str) {
   return str.charAt(0).toUpperCase() + str.slice(1)
 }
 
-/**
- * @property {String} name
- * @property {String} gender
- * @property {Object} homeworld
- * @property {String[]} films
- * @property {Object[]} starships
- */
-
-/**
- * @typedef  {Object} homeworld
- * @property {String} name
- * @property {String[]} films
- */
-
-/**
- * @typedef  {Object} starships instance
- * @property {String} name
- * @property {String} model
- * @property {String} manufacturer
- * @property {String} cost_in_credits
- * @property {String} crew
- */
-// function test(data) {
-//   console.log(data.starships[0].manufacturer);
+// /**
+//  * @property {String} name
+//  * @property {String} gender
+//  * @property {Object} homeworld
+//  * @property {String[]} films
+//  * @property {Object[]} starships
+//  */
+//
+// /**
+//  * @typedef  {Object} homeworld
+//  * @property {String} name
+//  * @property {String[]} films
+//  */
+//
+// /**
+//  * @typedef  {Object} starships instance
+//  * @property {String} name
+//  * @property {String} model
+//  * @property {String} manufacturer
+//  * @property {String} cost_in_credits
+//  * @property {String} crew
+//  */
+// function processApiResponse (data) {
+//   console.log(data.starships[0].manufacturer)
 // }
-// test();
+// processApiResponse()

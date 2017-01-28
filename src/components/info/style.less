@@ -1,0 +1,88 @@
+@import '~style/helpers';
+
+.image {
+  border: 1px solid #fff;
+  display: block;
+  margin: auto;
+  padding: 0;
+  width: 90%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.about {
+  background-color: #ececec;
+  clear: both;
+  padding: 30px 0;
+}
+
+.about::after {
+  clear: both;
+  content: " ";
+  display: block;
+  height: 0;
+}
+
+.header {
+  padding-bottom: 0;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.hr {
+  border-color: #FFF;
+  width: 200px;
+}
+
+.p {
+  line-height: 150%;
+  margin: 0 auto;
+  padding: 10px 0;
+}
+
+.ul {
+  display: block;
+  line-height: 150%;
+  margin: 0 auto;
+  padding: 10px 0;
+  width: 33%;
+}
+
+.li {
+  list-style: none;
+}
+
+.li:before {
+  content: '📖 ';
+}
+
+.a {
+  color: #2980b9;
+  &:hover, &:active {
+    text-decoration: none;
+  }
+}
+
+.json {
+  background-color: #f5f5f5;
+  clear: both;
+  padding: 30px 0;
+}
+
+.jsdoc {
+  background-color: #ececec;
+  padding: 30px 0;
+}
+
+.json .p, .jsdoc .p {
+  width: 35%;
+}
+
+.center, .left, .right {
+  float: left;
+  width: 33%;
+  min-height: 450px;
+  position: relative;
+}
