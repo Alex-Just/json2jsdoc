@@ -82,6 +82,12 @@ export default class Info extends Component {
                 href='https://en.wikipedia.org/wiki/JSDoc' target='_blank'>Wikipedia - JSDoc</a>
             </li>
             <li class={style.li}>
+              <a class={style.a} href='http://www.justjson.com/2013/07/jsdoc-documenting-configparamcustom.html'
+                title='Visit http://www.justjson.com/2013/07/jsdoc-documenting-configparamcustom.html JSdoc Tutorial' target='_blank'>
+                Documenting custom JSON object
+              </a>
+            </li>
+            <li class={style.li}>
               <a class={style.a} href='http://speakingjs.com/es5/ch29.html'
                 title='Visit http://speakingjs.com/es5/ch29.html JSdoc Tutorial' target='_blank'>JSDoc:
                 Generating API Documentation</a>
